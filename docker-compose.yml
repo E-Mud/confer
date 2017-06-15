@@ -1,0 +1,18 @@
+# command: ls -l /bin/dash
+version: '2'
+services:
+    dev:
+        build: .
+        command: rails s -b 0.0.0.0
+        ports:
+            - 3000:3000
+        volumes:
+            - .:/app
+        links:
+            - db
+    db:
+        image: postgres
+        environment:
+            POSTGRES_USER: confer
+            POSTGRES_PASSWORD: confer
+            POSTGRES_DB: confer_development
