@@ -10,6 +10,15 @@ services:
             - .:/app
         links:
             - db
+    bash:
+        build: .
+        command: /bin/bash
+        volumes:
+            - .:/app
+        links:
+            - db
+        stdin_open: true
+        tty: true
     db:
         image: postgres
         environment:
