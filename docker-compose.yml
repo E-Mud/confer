@@ -1,7 +1,7 @@
 # command: ls -l /bin/dash
 version: '2'
 services:
-    dev:
+    devapi:
         build: .
         command: rails s -b 0.0.0.0
         ports:
@@ -25,3 +25,12 @@ services:
             POSTGRES_USER: confer
             POSTGRES_PASSWORD: confer
             POSTGRES_DB: confer_development
+    dev:
+        build:
+            context: ./client
+        volumes:
+            - ./client:/app
+        ports:
+            - 8081:80
+        links:
+            - devapi
