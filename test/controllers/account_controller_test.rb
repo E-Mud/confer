@@ -1,6 +1,14 @@
 require 'test_helper'
 
 class AccountControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  teardown do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   test "creates one account" do
     post_json '/signup', {username: 'test@test.com', password: 'password'}
 

@@ -5,13 +5,7 @@ require 'rails/test_help'
 DatabaseCleaner.strategy = :transaction
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
-
-  # Add more helper methods to be used by all tests here...
+  DatabaseCleaner.clean_with(:truncation)
 end
 
 class ActionDispatch::IntegrationTest
@@ -20,14 +14,6 @@ class ActionDispatch::IntegrationTest
       'CONTENT_TYPE' => 'application/json',
       'ACCEPT' => 'json'
     }
-  end
-
-  setup do
-    DatabaseCleaner.start
-  end
-
-  teardown do
-    DatabaseCleaner.clean
   end
 
   def put_json(path, obj)
@@ -51,6 +37,6 @@ class ActionDispatch::IntegrationTest
   end
 
   def assert_created
-    assert_equal "201", response.code
+    assert_response :created
   end
 end

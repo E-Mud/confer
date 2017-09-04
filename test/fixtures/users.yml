@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 #
-# one:
-#   username: MyString
-#   password: MyString
-#   account: one
-#
-# two:
-#   username: MyString
-#   password: MyString
-#   account: two
+one:
+  username: test@test.com
+  encrypted_password: "TNb21ypgAvHVMoaphEWquWxzo7I2vWA+\n"
+  encrypted_password_iv: "iHDPe6goIkR7Fwdl\n"
+  account: default_account
