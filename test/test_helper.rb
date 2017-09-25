@@ -12,7 +12,8 @@ class ActionDispatch::IntegrationTest
   def default_json_headers
     {
       'CONTENT_TYPE' => 'application/json',
-      'ACCEPT' => 'json'
+      'ACCEPT' => 'json',
+      'HTTP_AUTHORIZATION' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoxNDA3MDEwMTAsInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsImFjY291bnRJZCI6MjYzMzkxMjAzfX0.slGeD3rKtzy6acvFeX4PG8Av3VBbONZCxRJ2F8Ti1VY'
     }
   end
 

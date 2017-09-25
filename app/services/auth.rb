@@ -12,5 +12,13 @@ module Auth
 
       JWT.encode payload, Confer::Application.secrets[:secret_key_base], 'HS256'
     end
+
+    def decode_payload(token)
+      return nil if token.nil?
+      
+      payload, _ = JWT.decode token, Confer::Application.secrets[:secret_key_base], true, { :algorithm => 'HS256' }
+
+      payload
+    end
   end
 end

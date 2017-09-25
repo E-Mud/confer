@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902135112) do
+ActiveRecord::Schema.define(version: 20170904150313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 20170902135112) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "apps", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.integer  "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_apps_on_account_id", using: :btree
+    t.index ["creator_id"], name: "index_apps_on_creator_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,5 +40,7 @@ ActiveRecord::Schema.define(version: 20170902135112) do
     t.index ["account_id"], name: "index_users_on_account_id", using: :btree
   end
 
+  add_foreign_key "apps", "accounts"
+  add_foreign_key "apps", "users", column: "creator_id"
   add_foreign_key "users", "accounts"
 end

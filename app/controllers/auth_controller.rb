@@ -5,6 +5,8 @@ class AuthController < ApplicationController
     user = User.find_by(:username => user_params[:username])
     token = generate_token user
 
+    p current_user
+
     respond ({token: token, user: user}), serializer: LoginSerializer
   end
 

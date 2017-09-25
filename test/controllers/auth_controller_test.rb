@@ -6,7 +6,7 @@ class AuthControllerTest < ActionDispatch::IntegrationTest
   fixtures :accounts, :users
 
   test "should generate token" do
-    user = users(:one)
+    user = users(:default_user)
     account = accounts(:default_account)
     expected = {'id' => user.id, 'username' => user.username, 'accountId' => account.id}
     post_json '/auth/login', {username: 'test@test.com', password: 'password'}
